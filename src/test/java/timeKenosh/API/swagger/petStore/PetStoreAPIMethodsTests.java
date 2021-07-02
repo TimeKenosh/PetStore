@@ -36,7 +36,7 @@ public class PetStoreAPIMethodsTests extends BasicTest {
         PetStoreDTO expectedUpdatePetsDataResultAsPetStoreDTO = petStoreDTOs.basicPetStoreDTOWithChanges();
 
 
-        Assert.assertEquals(actualUpdatePetsDataResultAsPetStoreDTO, expectedUpdatePetsDataResultAsPetStoreDTO);
+        Assert.assertEquals(actualUpdatePetsDataResultAsPetStoreDTO, expectedUpdatePetsDataResultAsPetStoreDTO, "verifyUpdatePetsData working wrong");
     }
 
 //    @Test(priority = 3, description = "Check the adding image to the pet")
@@ -56,7 +56,7 @@ public class PetStoreAPIMethodsTests extends BasicTest {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
         String expectedGetPetsByStatusResponseAsString = bufferedReader.readLine();
 
-        Assert.assertEquals(actualGetPetsByStatusResponseAsString, expectedGetPetsByStatusResponseAsString);
+        Assert.assertEquals(actualGetPetsByStatusResponseAsString, expectedGetPetsByStatusResponseAsString, "verifyGetPetsByStatus working wrong");
     }
 
     @Test(priority = 5, description = "Check the search pets by ID")
@@ -69,7 +69,7 @@ public class PetStoreAPIMethodsTests extends BasicTest {
                         petStoreAPIMethods.
                                 getPetsDataById());
 
-        Assert.assertEquals(actualGetPetsByIdResponseAsString, expectedGetPetsByIdResponseAsString);
+        Assert.assertEquals(actualGetPetsByIdResponseAsString, expectedGetPetsByIdResponseAsString, "verifyGetPetsDataById working wrong");
     }
 
     @Test(priority = 6, description = "Check the updating pet in the store with form data")
@@ -79,7 +79,7 @@ public class PetStoreAPIMethodsTests extends BasicTest {
 
         String expectedUpdatePetsDataByIdResponseAsString = "{\"code\":200,\"type\":\"unknown\",\"message\":\"42\"}";
 
-        Assert.assertEquals(actualUpdatePetsDataByIdResponseAsString, expectedUpdatePetsDataByIdResponseAsString);
+        Assert.assertEquals(actualUpdatePetsDataByIdResponseAsString, expectedUpdatePetsDataByIdResponseAsString, "verifyUpdatePetsDataById working wrong");
     }
 
 //    @Test(priority = 7, description = "Check the deleting pet from the store by ID")
