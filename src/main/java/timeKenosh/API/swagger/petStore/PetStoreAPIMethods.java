@@ -39,7 +39,6 @@ public class PetStoreAPIMethods {
                 when().
                 post().
                 then().
-                assertThat().
                 statusCode(200).
                 extract().
                 response().
