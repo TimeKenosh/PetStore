@@ -7,7 +7,7 @@ import timeKenosh.API.swagger.petStore.helper.PetStoreDTOs;
 
 import java.io.*;
 
-public class PetStoreAPIMethodsTests extends BasicTest{
+public class PetStoreAPIMethodsTests extends BasicTest {
 
     PetStoreDTOs petStoreDTOs = new PetStoreDTOs();
     Converter converter = new Converter();

@@ -21,7 +21,7 @@ public class PetStoreDTOs {
         return new PetStoreDTO(id, category, name, photoUrls, tags, status);
     }
 
-    public PetStoreDTO basicPetStoreDTOWithChanges(){
+    public PetStoreDTO basicPetStoreDTOWithChanges() {
 
         this.name = "Jora";
         this.category = new CategoryDTO(id, name);

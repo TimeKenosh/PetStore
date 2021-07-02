@@ -10,7 +10,8 @@ public class TagsDTO {
     @JsonProperty("name")
     private String name;
 
-    public TagsDTO(){}
+    public TagsDTO() {
+    }
 
     public TagsDTO(int id, String name) {
         this.id = id;

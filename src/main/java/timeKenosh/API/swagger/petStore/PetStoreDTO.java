@@ -25,7 +25,8 @@ public class PetStoreDTO {
     @JsonProperty("status")
     String status;
 
-    public PetStoreDTO(){}
+    public PetStoreDTO() {
+    }
 
     public PetStoreDTO(int id, CategoryDTO category, String name, String[] photoUrls, List<TagsDTO> tags, String status) {
         this.id = id;
