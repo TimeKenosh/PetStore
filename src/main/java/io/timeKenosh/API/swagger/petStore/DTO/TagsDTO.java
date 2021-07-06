@@ -1,4 +1,4 @@
-package timeKenosh.API.swagger.petStore;
+package io.timeKenosh.API.swagger.petStore.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

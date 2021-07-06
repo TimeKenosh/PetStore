@@ -1,41 +1,37 @@
-package timeKenosh.API.swagger.petStore;
+package io.timeKenosh.API.swagger.petStore;
 
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
-import timeKenosh.API.swagger.petStore.helper.PetStoreDTOs;
-
-import java.io.File;
+import io.timeKenosh.API.swagger.petStore.DTO.PetStoreDTO;
 
 import static io.restassured.RestAssured.*;
 
 public class PetStoreAPIMethods {
 
-    PetStoreDTOs petStoreDTOs = new PetStoreDTOs();
-
-    @Step("Upload an image")
-    public String uploadAnImage() {
-
-        final String IMAGE_FULL_PATH_ON_COMPUTER = "C:\\Users\\apecho\\Pictures\\Saved Pictures\\профіль.jpg";
-        File file = new File(IMAGE_FULL_PATH_ON_COMPUTER);
-
-        return given().
-                contentType(ContentType.MULTIPART).
-                body(file).
-                when().
-                post(petStoreDTOs.basicPetStoreDTO().id + "/uploadImage").
-                then().
-                statusCode(200).
-                extract().
-                response().
-                getBody().
-                asString();
-    }
+//    @Step("Upload an image")
+//    public String uploadAnImage() {
+//
+//        final String IMAGE_FULL_PATH_ON_COMPUTER = "C:\\Users\\apecho\\Pictures\\Saved Pictures\\профіль.jpg";
+//        File file = new File(IMAGE_FULL_PATH_ON_COMPUTER);
+//
+//        return given().
+//                contentType(ContentType.MULTIPART).
+//                body(file).
+//                when().
+//                post(petStoreDTOs.basicPetStoreDTO().id + "/uploadImage").
+//                then().
+//                statusCode(200).
+//                extract().
+//                response().
+//                getBody().
+//                asString();
+//    }
 
     @Step("Add a new pet to the store")
-    public String addNewPet() {
+    public String addNewPet(PetStoreDTO petStoreDTO) {
 
         return given().
-                body(petStoreDTOs.basicPetStoreDTO()).
+                body(petStoreDTO).
                 when().
                 post().
                 then().
@@ -47,10 +43,10 @@ public class PetStoreAPIMethods {
     }
 
     @Step("Update an existing pet")
-    public String updatePetsData() {
+    public String updatePetsData(PetStoreDTO petStoreDTO) {
 
         return given().
-                body(petStoreDTOs.basicPetStoreDTOWithChanges()).
+                body(petStoreDTO).
                 when().
                 put().
                 then().
@@ -65,7 +61,7 @@ public class PetStoreAPIMethods {
     public String getPetsByStatus() {
 
         return when().
-                get("findByStatus?status=indefinite").
+                get("findByStatus?status=special").
                 then().
                 statusCode(200).
                 extract().
@@ -75,10 +71,10 @@ public class PetStoreAPIMethods {
     }
 
     @Step("Find pet by ID")
-    public String getPetsDataById() {
+    public String getPetsDataById(String id) {
 
         return when().
-                get(petStoreDTOs.basicPetStoreDTO().id.toString()).
+                get(id).
                 then().
                 statusCode(200).
                 extract().
@@ -88,13 +84,13 @@ public class PetStoreAPIMethods {
     }
 
     @Step("Updates a pet in the store by form data")
-    public String updatePetsDataById() {
+    public String updatePetsDataById(String id) {
 
         return given().
                 contentType(ContentType.URLENC).
-                body("name=Jora&status=pending").
+                body("").
                 when().
-                post(petStoreDTOs.basicPetStoreDTO().id.toString()).
+                post(id).
                 then().
                 statusCode(200).
                 extract().
@@ -104,10 +100,10 @@ public class PetStoreAPIMethods {
     }
 
     @Step("Delete the pet by ID")
-    public String deleteThePetById() {
+    public String deleteThePetById(PetStoreDTO petStoreDTO) {
 
         return when().
-                delete(petStoreDTOs.basicPetStoreDTOWithChanges().id.toString()).
+                delete(petStoreDTO.getId().toString()).
                 then().
                 statusCode(200).
                 extract().

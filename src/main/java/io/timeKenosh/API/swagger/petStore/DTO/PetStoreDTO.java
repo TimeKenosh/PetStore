@@ -1,4 +1,4 @@
-package timeKenosh.API.swagger.petStore;
+package io.timeKenosh.API.swagger.petStore.DTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -87,7 +87,8 @@ public class PetStoreDTO {
 
     @Override
     public String toString() {
-        return String.format("{id:%d,category:%s,name:%s,photoUrls:" + Arrays.toString(photoUrls) + ",tags:%s,status:%s}", id, category, name, tags, status);
+        return String.format("{id:%d,category:%s,name:%s,photoUrls:" +
+                Arrays.toString(photoUrls) + ",tags:%s,status:%s}", id, category, name, tags, status);
     }
 
     @Override
